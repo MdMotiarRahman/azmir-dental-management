@@ -72,9 +72,9 @@
                     <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
                         <i class="fas fa-tooth text-white text-lg"></i>
                     </div>
-                    <div class="flex flex-col items-start leading-none gap-0.5">
-                        <span class="text-[17px] font-extrabold text-gray-900 tracking-[-0.01em]">AZMEER</span>
-                        <span class="text-[10.5px] font-semibold text-primary-600 tracking-[0.28em] -ml-px">Dental Care</span>
+                    <div class="flex flex-col items-center leading-none gap-0.5">
+                        <span class="text-[18px] font-extrabold text-gray-900 tracking-[0.06em]">AZMEER</span>
+                        <span class="text-[9px] font-semibold text-primary-600 tracking-[0.18em]">Dental Care</span>
                     </div>
                 </a>
 
@@ -148,9 +148,9 @@
                         <div class="w-9 h-9 bg-primary-500 rounded-lg flex items-center justify-center flex-shrink-0">
                             <i class="fas fa-tooth text-white text-sm"></i>
                         </div>
-                        <div class="flex flex-col items-start leading-none gap-0.5">
-                            <span class="text-[15px] font-extrabold text-white tracking-[-0.01em]">AZMEER</span>
-                            <span class="text-[9.5px] font-semibold text-primary-300 tracking-[0.28em] -ml-px">Dental Care</span>
+                        <div class="flex flex-col items-center leading-none gap-0.5">
+                            <span class="text-[16px] font-extrabold text-white tracking-[0.06em]">AZMEER</span>
+                            <span class="text-[8.5px] font-semibold text-primary-300 tracking-[0.18em]">Dental Care</span>
                         </div>
                     </a>
                     <p class="text-sm text-gray-400 leading-relaxed">
