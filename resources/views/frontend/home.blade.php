@@ -5,36 +5,137 @@
 @section('content')
 
 {{-- Hero --}}
-<section class="relative bg-gray-900 overflow-hidden">
-    <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1600&q=80" alt="Dental clinic" class="w-full h-full object-cover opacity-40">
+<section class="relative min-h-[600px] md:min-h-[680px] overflow-hidden">
+    {{-- Background Slider --}}
+    <div id="hero-slider" class="absolute inset-0">
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=1600&q=80')"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1600&q=80')"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1600&q=80')"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=1600&q=80')"></div>
     </div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-        <div class="max-w-xl">
-            <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-display font-bold text-white leading-[1.15] mb-3">
-                Azmeer Dental Care
+
+    {{-- Overlays --}}
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+
+    {{-- Content --}}
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 min-h-[600px] md:min-h-[680px] flex items-center">
+        <div class="max-w-2xl">
+            {{-- Badge --}}
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                <span class="text-white/90 text-sm font-medium">Now Accepting Appointments</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-display font-bold text-white leading-[1.15] mb-4">
+                Your Smile, <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 to-primary-400">Our Priority</span>
             </h1>
-            <p class="text-xl text-primary-300 font-medium mb-4">
-                Professional Dental Care Service
+
+            <p class="text-lg md:text-xl text-gray-300 mb-3 leading-relaxed">
+                Professional dental care in Jamalpur with modern techniques and gentle touch.
             </p>
-            <p class="text-lg text-gray-300 mb-2 leading-relaxed">
-                Dr. Sher Shah, BDS — Dental Surgeon
-            </p>
-            <p class="text-sm text-gray-400 mb-8">
-                BMDC Reg. No: 10448 · Patgram Road, Jamalpur
-            </p>
-            <div class="flex flex-col sm:flex-row gap-3">
-                <a href="tel:{{ $contactInfo->phone ?? '' }}" class="bg-primary-600 text-white px-7 py-3.5 text-sm font-semibold rounded-lg hover:bg-primary-700 transition text-center inline-flex items-center justify-center gap-2">
-                    <i class="fas fa-phone text-xs"></i>
-                    Book Appointment: {{ $contactInfo->phone ?? '' }}
+
+            <div class="flex items-center gap-3 text-gray-400 text-sm mb-8">
+                <span class="flex items-center gap-1.5">
+                    <i class="fas fa-user-doctor text-primary-400"></i>
+                    Dr. Sher Shah, BDS
+                </span>
+                <span class="w-1 h-1 bg-gray-500 rounded-full"></span>
+                <span class="flex items-center gap-1.5">
+                    <i class="fas fa-id-card text-primary-400"></i>
+                    BMDC Reg. 10448
+                </span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3 mb-10">
+                <a href="{{ route('appointment.create') }}" class="bg-primary-600 text-white px-8 py-4 text-sm font-semibold rounded-xl hover:bg-primary-700 transition text-center inline-flex items-center justify-center gap-2 shadow-lg shadow-primary-600/30">
+                    <i class="fas fa-calendar-check text-sm"></i>
+                    Book Appointment
                 </a>
-                <a href="{{ route('appointment.create') }}" class="border border-white/30 text-white px-7 py-3.5 text-sm font-semibold rounded-lg hover:bg-white/10 transition text-center">
-                    Request Online
+                <a href="tel:{{ $contactInfo->phone ?? '' }}" class="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 text-sm font-semibold rounded-xl hover:bg-white/20 transition text-center inline-flex items-center justify-center gap-2">
+                    <i class="fas fa-phone text-sm"></i>
+                    {{ $contactInfo->phone ?? '01638209228' }}
                 </a>
+            </div>
+
+            {{-- Stats --}}
+            <div class="flex items-center gap-6 md:gap-8">
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white">4+</div>
+                    <div class="text-xs text-gray-400">Services</div>
+                </div>
+                <div class="w-px h-10 bg-white/20"></div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white">100%</div>
+                    <div class="text-xs text-gray-400">Commitment</div>
+                </div>
+                <div class="w-px h-10 bg-white/20"></div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white">BMDC</div>
+                    <div class="text-xs text-gray-400">Registered</div>
+                </div>
             </div>
         </div>
     </div>
+
+    {{-- Slider Navigation Dots --}}
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2">
+        <button class="hero-dot active w-3 h-3 rounded-full transition-all" data-slide="0"></button>
+        <button class="hero-dot w-3 h-3 rounded-full transition-all" data-slide="1"></button>
+        <button class="hero-dot w-3 h-3 rounded-full transition-all" data-slide="2"></button>
+        <button class="hero-dot w-3 h-3 rounded-full transition-all" data-slide="3"></button>
+    </div>
 </section>
+
+<style>
+    .hero-slide {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out;
+    }
+    .hero-slide.active {
+        opacity: 1;
+    }
+    .hero-dot {
+        background: rgba(255,255,255,0.3);
+    }
+    .hero-dot.active {
+        background: #fff;
+        width: 2rem;
+        border-radius: 9999px;
+    }
+</style>
+
+@push('scripts')
+<script>
+    (function() {
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+        let current = 0;
+        const total = slides.length;
+
+        function goTo(index) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = index;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => goTo(parseInt(dot.dataset.slide)));
+        });
+
+        setInterval(() => {
+            goTo((current + 1) % total);
+        }, 5000);
+    })();
+</script>
+@endpush
 
 {{-- Visiting Hours Bar --}}
 <section class="bg-primary-600 text-white">
