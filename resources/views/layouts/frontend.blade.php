@@ -74,7 +74,7 @@
                     </div>
                     <div class="inline-flex flex-col leading-none gap-[3px]">
                         <span class="text-[18px] font-extrabold text-gray-900 tracking-[0.04em]">AZMEER</span>
-                        <span class="text-[9px] font-medium text-primary-600 block w-full" style="text-align:justify;text-align-last:justify">Dental Care</span>
+                        <span class="text-[9px] font-medium text-primary-600 tracking-[0.32em]">Dental Care</span>
                     </div>
                 </a>
 
@@ -150,7 +150,7 @@
                         </div>
                         <div class="flex flex-col items-center leading-none gap-0.5">
                             <span class="text-[16px] font-extrabold text-white tracking-[0.06em]">AZMEER</span>
-                            <span class="text-[8.5px] font-semibold text-primary-300 tracking-[0.18em]">Dental Care</span>
+                            <span class="text-[8.5px] font-semibold text-primary-300 tracking-[0.32em]">Dental Care</span>
                         </div>
                     </a>
                     <p class="text-sm text-gray-400 leading-relaxed">
