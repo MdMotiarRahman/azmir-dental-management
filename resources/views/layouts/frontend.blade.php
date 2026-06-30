@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'SmileCare Dental Clinic')</title>
+    <title>@yield('title', 'Azmeer Dental Care')</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -15,16 +15,16 @@
                 extend: {
                     colors: {
                         primary: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            200: '#99f6e4',
-                            300: '#5eead4',
-                            400: '#2dd4bf',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e',
-                            800: '#115e59',
-                            900: '#134e4a',
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
                         }
                     },
                     fontFamily: {
@@ -52,28 +52,12 @@
                             {{ $contactInfo->phone }}
                         </a>
                     @endif
-                    @if($contactInfo->email ?? null)
-                        <a href="mailto:{{ $contactInfo->email }}" class="flex items-center gap-1.5 hover:text-white transition">
-                            <i class="fas fa-envelope text-[10px]"></i>
-                            {{ $contactInfo->email }}
-                        </a>
-                    @endif
                 </div>
                 <div class="flex items-center gap-4">
                     <span class="hidden sm:flex items-center gap-1.5">
                         <i class="fas fa-clock text-[10px]"></i>
-                        Mon – Sat: 9:00 AM – 8:00 PM
+                        Morning: 10 AM – 2 PM · Evening: 4 PM – 8 PM
                     </span>
-                    @if($contactInfo->whatsapp ?? null)
-                        <a href="https://wa.me/{{ $contactInfo->whatsapp }}" target="_blank" class="hover:text-white transition">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    @endif
-                    @if($contactInfo->facebook ?? null)
-                        <a href="{{ $contactInfo->facebook }}" target="_blank" class="hover:text-white transition">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    @endif
                 </div>
             </div>
         </div>
@@ -89,8 +73,7 @@
                         <i class="fas fa-tooth text-white text-lg"></i>
                     </div>
                     <div class="leading-tight">
-                        <span class="text-lg font-bold text-gray-900 tracking-tight">SmileCare</span>
-                        <span class="block text-[11px] text-gray-400 font-medium tracking-wide uppercase">Dental Clinic</span>
+                        <span class="text-lg font-bold text-gray-900 tracking-tight">Azmeer Dental Care</span>
                     </div>
                 </a>
 
@@ -99,12 +82,12 @@
                     <a href="{{ route('home') }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 rounded-lg transition {{ request()->routeIs('home') ? 'text-primary-600' : '' }}">Home</a>
                     <a href="{{ route('about') }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 rounded-lg transition {{ request()->routeIs('about') ? 'text-primary-600' : '' }}">About</a>
                     <a href="{{ route('services.index') }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 rounded-lg transition {{ request()->routeIs('services.*') ? 'text-primary-600' : '' }}">Services</a>
-                    <a href="{{ route('doctors.index') }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 rounded-lg transition {{ request()->routeIs('doctors.*') ? 'text-primary-600' : '' }}">Doctors</a>
+                    <a href="{{ route('doctors.index') }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 rounded-lg transition {{ request()->routeIs('doctors.*') ? 'text-primary-600' : '' }}">Doctor</a>
                     <a href="{{ route('contact.index') }}" class="px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary-600 rounded-lg transition {{ request()->routeIs('contact.*') ? 'text-primary-600' : '' }}">Contact</a>
                     <div class="w-px h-5 bg-gray-200 mx-2"></div>
-                    <a href="{{ route('appointment.create') }}" class="bg-primary-600 text-white px-5 py-2.5 text-sm font-semibold rounded-lg hover:bg-primary-700 transition inline-flex items-center gap-2">
-                        <i class="fas fa-calendar-check text-xs"></i>
-                        Book Appointment
+                    <a href="tel:{{ $contactInfo->phone ?? '' }}" class="bg-primary-600 text-white px-5 py-2.5 text-sm font-semibold rounded-lg hover:bg-primary-700 transition inline-flex items-center gap-2">
+                        <i class="fas fa-phone text-xs"></i>
+                        {{ $contactInfo->phone ?? 'Call Now' }}
                     </a>
                 </div>
 
@@ -121,10 +104,10 @@
                 <a href="{{ route('home') }}" class="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg">Home</a>
                 <a href="{{ route('about') }}" class="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg">About</a>
                 <a href="{{ route('services.index') }}" class="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg">Services</a>
-                <a href="{{ route('doctors.index') }}" class="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg">Doctors</a>
+                <a href="{{ route('doctors.index') }}" class="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg">Doctor</a>
                 <a href="{{ route('contact.index') }}" class="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg">Contact</a>
                 <div class="pt-2">
-                    <a href="{{ route('appointment.create') }}" class="block bg-primary-600 text-white px-5 py-2.5 text-sm font-semibold rounded-lg text-center">Book Appointment</a>
+                    <a href="tel:{{ $contactInfo->phone ?? '' }}" class="block bg-primary-600 text-white px-5 py-2.5 text-sm font-semibold rounded-lg text-center">Call: {{ $contactInfo->phone ?? '' }}</a>
                 </div>
             </div>
         </div>
@@ -165,12 +148,11 @@
                             <i class="fas fa-tooth text-white text-sm"></i>
                         </div>
                         <div class="leading-tight">
-                            <span class="text-base font-bold text-white">SmileCare</span>
-                            <span class="block text-[10px] text-gray-400 font-medium uppercase tracking-wider">Dental Clinic</span>
+                            <span class="text-base font-bold text-white">Azmeer Dental Care</span>
                         </div>
                     </a>
                     <p class="text-sm text-gray-400 leading-relaxed">
-                        Your trusted dental care partner. We deliver healthy, beautiful smiles with modern techniques and a gentle touch.
+                        Professional dental care service in Jamalpur. Providing trusted treatment with modern techniques and a gentle touch.
                     </p>
                 </div>
 
@@ -181,7 +163,7 @@
                         <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-white transition">Home</a></li>
                         <li><a href="{{ route('about') }}" class="text-gray-400 hover:text-white transition">About Us</a></li>
                         <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Services</a></li>
-                        <li><a href="{{ route('doctors.index') }}" class="text-gray-400 hover:text-white transition">Our Dentists</a></li>
+                        <li><a href="{{ route('doctors.index') }}" class="text-gray-400 hover:text-white transition">Our Doctor</a></li>
                         <li><a href="{{ route('contact.index') }}" class="text-gray-400 hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
@@ -190,36 +172,31 @@
                 <div>
                     <h4 class="text-white font-semibold text-sm mb-4">Our Services</h4>
                     <ul class="space-y-2.5 text-sm">
-                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">General Dentistry</a></li>
-                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Teeth Whitening</a></li>
-                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Orthodontics</a></li>
-                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Dental Implants</a></li>
-                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Root Canal</a></li>
+                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Dental Consultation</a></li>
+                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Oral Care</a></li>
+                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Dental Treatment</a></li>
+                        <li><a href="{{ route('services.index') }}" class="text-gray-400 hover:text-white transition">Dental Surgery</a></li>
                     </ul>
                 </div>
 
                 {{-- Contact --}}
                 <div>
-                    <h4 class="text-white font-semibold text-sm mb-4">Get in Touch</h4>
+                    <h4 class="text-white font-semibold text-sm mb-4">Contact Us</h4>
                     <ul class="space-y-3 text-sm">
-                        @if($contactInfo->address ?? null)
-                            <li class="flex items-start gap-2.5 text-gray-400">
-                                <i class="fas fa-map-marker-alt mt-0.5 text-xs"></i>
-                                <span>{{ $contactInfo->address }}</span>
-                            </li>
-                        @endif
+                        <li class="flex items-start gap-2.5 text-gray-400">
+                            <i class="fas fa-map-marker-alt mt-0.5 text-xs"></i>
+                            <span>Patgram Road, Jamalpur</span>
+                        </li>
                         @if($contactInfo->phone ?? null)
                             <li class="flex items-center gap-2.5 text-gray-400">
                                 <i class="fas fa-phone text-xs"></i>
                                 <a href="tel:{{ $contactInfo->phone }}" class="hover:text-white transition">{{ $contactInfo->phone }}</a>
                             </li>
                         @endif
-                        @if($contactInfo->email ?? null)
-                            <li class="flex items-center gap-2.5 text-gray-400">
-                                <i class="fas fa-envelope text-xs"></i>
-                                <a href="mailto:{{ $contactInfo->email }}" class="hover:text-white transition">{{ $contactInfo->email }}</a>
-                            </li>
-                        @endif
+                        <li class="flex items-center gap-2.5 text-gray-400">
+                            <i class="fas fa-clock text-xs"></i>
+                            <span>Morning: 10 AM – 2 PM<br>Evening: 4 PM – 8 PM</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -228,18 +205,9 @@
         <div class="border-t border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
                 <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
-                    <p class="text-xs text-gray-500">&copy; {{ date('Y') }} SmileCare Dental Clinic. All rights reserved.</p>
+                    <p class="text-xs text-gray-500">&copy; {{ date('Y') }} Azmeer Dental Care. All rights reserved.</p>
                     <div class="flex items-center gap-3">
-                        @if($contactInfo->facebook ?? null)
-                            <a href="{{ $contactInfo->facebook }}" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-primary-600 hover:text-white transition">
-                                <i class="fab fa-facebook-f text-xs"></i>
-                            </a>
-                        @endif
-                        @if($contactInfo->whatsapp ?? null)
-                            <a href="https://wa.me/{{ $contactInfo->whatsapp }}" target="_blank" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-green-600 hover:text-white transition">
-                                <i class="fab fa-whatsapp text-xs"></i>
-                            </a>
-                        @endif
+                        <p class="text-xs text-gray-500">Patgram Road, Jamalpur · Appointment: {{ $contactInfo->phone ?? '' }}</p>
                     </div>
                 </div>
             </div>

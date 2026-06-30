@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title', $doctor->name . ' - Hospital Management')
+@section('title', $doctor->name . ' - Azmeer Dental Care')
 
 @section('content')
 {{-- Page Header --}}
@@ -10,7 +10,7 @@
         <nav class="flex justify-center gap-2 text-primary-200">
             <a href="{{ route('home') }}" class="hover:text-white">Home</a>
             <span>/</span>
-            <a href="{{ route('doctors.index') }}" class="hover:text-white">Doctors</a>
+            <a href="{{ route('doctors.index') }}" class="hover:text-white">Doctor</a>
             <span>/</span>
             <span class="text-white">{{ $doctor->name }}</span>
         </nav>

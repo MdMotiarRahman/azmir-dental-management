@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title', $service->title . ' - Hospital Management')
+@section('title', $service->title . ' - Azmeer Dental Care')
 
 @section('content')
 {{-- Page Header --}}

@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title', 'Contact Us - Hospital Management')
+@section('title', 'Contact Us - Azmeer Dental Care')
 
 @section('content')
 {{-- Page Header --}}
@@ -22,57 +22,40 @@
             {{-- Contact Info --}}
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Get In Touch</h3>
-                    <p class="text-gray-600">We are here to help you. Reach out to us through any of the following channels.</p>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h3>
+                    <p class="text-gray-600">We welcome your queries. Reach out to us or visit our clinic during visiting hours.</p>
                 </div>
 
-                @if($contactInfo->address ?? null)
-                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                        <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-map-marker-alt text-primary-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Address</h4>
-                            <p class="text-gray-600 text-sm">{{ $contactInfo->address }}</p>
-                        </div>
+                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
+                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-map-marker-alt text-primary-600"></i>
                     </div>
-                @endif
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Address</h4>
+                        <p class="text-gray-600 text-sm">Patgram Road, Jamalpur</p>
+                    </div>
+                </div>
 
-                @if($contactInfo->phone ?? null)
-                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                        <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-phone text-primary-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Phone</h4>
-                            <p class="text-gray-600 text-sm">{{ $contactInfo->phone }}</p>
-                        </div>
+                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
+                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-phone text-primary-600"></i>
                     </div>
-                @endif
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Appointment Phone</h4>
+                        <a href="tel:{{ $contactInfo->phone ?? '' }}" class="text-primary-600 font-semibold text-sm">{{ $contactInfo->phone ?? '01638209228' }}</a>
+                    </div>
+                </div>
 
-                @if($contactInfo->email ?? null)
-                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                        <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-envelope text-primary-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">Email</h4>
-                            <p class="text-gray-600 text-sm">{{ $contactInfo->email }}</p>
-                        </div>
+                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
+                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-clock text-primary-600"></i>
                     </div>
-                @endif
-
-                @if($contactInfo->whatsapp ?? null)
-                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fab fa-whatsapp text-green-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900">WhatsApp</h4>
-                            <p class="text-gray-600 text-sm">{{ $contactInfo->whatsapp }}</p>
-                        </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">Visiting Hours</h4>
+                        <p class="text-gray-600 text-sm">Morning: 10:00 AM – 2:00 PM</p>
+                        <p class="text-gray-600 text-sm">Evening: 4:00 PM – 8:00 PM</p>
                     </div>
-                @endif
+                </div>
             </div>
 
             {{-- Contact Form --}}
@@ -137,12 +120,14 @@
             </div>
         </div>
 
-        {{-- Google Map --}}
-        @if($contactInfo->google_map_embed ?? null)
-            <div class="mt-12 rounded-2xl overflow-hidden shadow-sm">
-                {!! $contactInfo->google_map_embed !!}
+        {{-- Google Map Placeholder --}}
+        <div class="mt-12 bg-gray-100 rounded-2xl overflow-hidden h-80 flex items-center justify-center">
+            <div class="text-center text-gray-400">
+                <i class="fas fa-map-marked-alt text-4xl mb-3"></i>
+                <p class="text-sm">Google Map — Patgram Road, Jamalpur</p>
+                <p class="text-xs mt-1">Embed Google Map code here</p>
             </div>
-        @endif
+        </div>
     </div>
 </section>
 @endsection

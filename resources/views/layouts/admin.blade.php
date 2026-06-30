@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Admin Dashboard') - Hospital Admin</title>
+    <title>@yield('title', 'Admin Dashboard') - Azmeer Dental Care</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
@@ -44,10 +44,13 @@
             {{-- Logo --}}
             <div class="h-20 flex items-center justify-center border-b">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
-                        <i class="fas fa-heartbeat text-white"></i>
+                    <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-tooth text-white"></i>
                     </div>
-                    <span class="text-lg font-bold text-primary-900">Admin Panel</span>
+                    <div class="leading-tight">
+                        <span class="text-sm font-bold text-gray-900">Azmeer Dental Care</span>
+                        <span class="block text-[10px] text-gray-400 font-medium">Admin Panel</span>
+                    </div>
                 </a>
             </div>
 
@@ -63,7 +66,7 @@
                     <li>
                         <a href="{{ route('admin.doctors.index') }}" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-50 transition {{ request()->routeIs('admin.doctors.*') ? 'active' : '' }}">
                             <i class="fas fa-user-md w-5"></i>
-                            <span>Doctors</span>
+                            <span>Doctor</span>
                         </a>
                     </li>
                     <li>

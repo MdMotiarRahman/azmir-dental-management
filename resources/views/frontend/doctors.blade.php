@@ -1,16 +1,16 @@
 @extends('layouts.frontend')
 
-@section('title', 'Our Doctors - Hospital Management')
+@section('title', 'Our Doctor - Azmeer Dental Care')
 
 @section('content')
 {{-- Page Header --}}
 <section class="bg-primary-700 py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Doctors</h1>
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Doctor</h1>
         <nav class="flex justify-center gap-2 text-primary-200">
             <a href="{{ route('home') }}" class="hover:text-white">Home</a>
             <span>/</span>
-            <span class="text-white">Doctors</span>
+            <span class="text-white">Doctor</span>
         </nav>
     </div>
 </section>
@@ -27,14 +27,17 @@
                                 <img src="{{ $doctor->photo_url }}" alt="{{ $doctor->name }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                             @else
                                 <div class="w-full h-full flex items-center justify-center bg-primary-50">
-                                    <i class="fas fa-user-md text-primary-300 text-6xl"></i>
+                                    <i class="fas fa-user-doctor text-primary-300 text-6xl"></i>
                                 </div>
                             @endif
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-900 mb-1">{{ $doctor->name }}</h3>
                             <p class="text-primary-600 font-medium mb-1">{{ $doctor->specialization }}</p>
-                            <p class="text-gray-500 text-sm mb-3">{{ $doctor->qualification }}</p>
+                            <p class="text-gray-500 text-sm mb-2">{{ $doctor->qualification }}</p>
+                            <p class="text-gray-400 text-sm mb-3">
+                                <i class="fas fa-id-card mr-1"></i> BMDC Reg. {{ $doctor->registration_number }}
+                            </p>
                             <p class="text-gray-400 text-sm mb-4">
                                 <i class="fas fa-clock mr-1"></i> {{ $doctor->visiting_hours }}
                             </p>
@@ -45,14 +48,10 @@
                     </div>
                 @endforeach
             </div>
-
-            <div class="mt-10">
-                {{ $doctors->links() }}
-            </div>
         @else
             <div class="text-center py-12">
-                <i class="fas fa-user-md text-6xl text-gray-300 mb-4"></i>
-                <p class="text-gray-500 text-lg">No doctors available at the moment.</p>
+                <i class="fas fa-user-doctor text-6xl text-gray-300 mb-4"></i>
+                <p class="text-gray-500 text-lg">Doctor profile will be available soon.</p>
             </div>
         @endif
     </div>
