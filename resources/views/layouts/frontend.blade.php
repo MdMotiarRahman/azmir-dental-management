@@ -72,9 +72,9 @@
                     <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center flex-shrink-0">
                         <i class="fas fa-tooth text-white text-lg"></i>
                     </div>
-                    <div class="flex flex-col items-center leading-none gap-0.5">
-                        <span class="text-[18px] font-extrabold text-gray-900 tracking-[0.06em]">AZMEER</span>
-                        <span class="text-[9px] font-semibold text-primary-600 tracking-[0.18em]">Dental Care</span>
+                    <div class="inline-flex flex-col leading-none gap-[3px]">
+                        <span class="text-[18px] font-extrabold text-gray-900 tracking-[0.04em]">AZMEER</span>
+                        <span class="text-[9px] font-medium text-primary-600 block w-full" style="text-align:justify;text-align-last:justify">Dental Care</span>
                     </div>
                 </a>
 
