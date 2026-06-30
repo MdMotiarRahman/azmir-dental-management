@@ -20,4 +20,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::get('/contact', [AdminContactController::class, 'index'])->name('contact.index');
     Route::put('/contact', [AdminContactController::class, 'update'])->name('contact.update');
+    Route::get('/contact/messages/{message}', [AdminContactController::class, 'showMessage'])->name('contact.messages.show');
+    Route::patch('/contact/messages/{message}/replied', [AdminContactController::class, 'markReplied'])->name('contact.messages.replied');
+    Route::delete('/contact/messages/{message}', [AdminContactController::class, 'destroyMessage'])->name('contact.messages.destroy');
 });
