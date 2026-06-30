@@ -3,53 +3,72 @@
 @section('title', 'Book Appointment - Azmeer Dental Care')
 
 @section('content')
-{{-- Page Header --}}
-<section class="bg-primary-700 py-20">
+{{-- CTA Hero --}}
+<section class="bg-primary-700 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Book Appointment</h1>
-        <nav class="flex justify-center gap-2 text-primary-200">
-            <a href="{{ route('home') }}" class="hover:text-white">Home</a>
-            <span>/</span>
-            <span class="text-white">Appointment</span>
-        </nav>
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/90 text-xs font-medium px-3 py-1.5 rounded-full mb-5">
+            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
+            Now Accepting Appointments
+        </div>
+        <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Book Your Appointment</h1>
+        <p class="text-primary-200 text-lg max-w-xl mx-auto mb-8">
+            Schedule a visit with Dr. Sher Shah. Call us directly or fill out the form below.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:{{ $contactInfo->phone ?? '' }}" class="bg-white text-primary-700 px-8 py-4 text-sm font-bold rounded-lg hover:bg-gray-50 transition inline-flex items-center justify-center gap-2 shadow-lg">
+                <i class="fas fa-phone text-sm"></i>
+                Call: {{ $contactInfo->phone ?? '01638209228' }}
+            </a>
+            <a href="#appointment-form" class="border-2 border-white/40 text-white px-8 py-4 text-sm font-bold rounded-lg hover:bg-white/10 transition text-center">
+                Fill Out Form Below
+            </a>
+        </div>
     </div>
 </section>
 
-{{-- Appointment Info + Form --}}
-<section class="py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {{-- Visiting Hours --}}
-        <div class="bg-primary-50 rounded-2xl p-8 mb-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+{{-- Appointment Info Cards --}}
+<section class="bg-white border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+                <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-user-doctor text-primary-600 text-lg"></i>
+                </div>
                 <div>
-                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-user-doctor text-primary-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-900 mb-1">Dr. Sher Shah, BDS</h3>
+                    <h3 class="font-semibold text-gray-900">Dr. Sher Shah, BDS</h3>
                     <p class="text-sm text-gray-500">Dental Surgeon · BMDC Reg. 10448</p>
                 </div>
-                <div>
-                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-clock text-primary-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-900 mb-1">Visiting Hours</h3>
-                    <p class="text-sm text-gray-500">Morning: 10:00 AM – 2:00 PM</p>
-                    <p class="text-sm text-gray-500">Evening: 4:00 PM – 8:00 PM</p>
+            </div>
+            <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+                <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-clock text-primary-600 text-lg"></i>
                 </div>
                 <div>
-                    <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-phone text-primary-600 text-lg"></i>
-                    </div>
-                    <h3 class="font-semibold text-gray-900 mb-1">Call for Appointment</h3>
+                    <h3 class="font-semibold text-gray-900">Visiting Hours</h3>
+                    <p class="text-sm text-gray-500">Morning: 10 AM – 2 PM</p>
+                    <p class="text-sm text-gray-500">Evening: 4 PM – 8 PM</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 p-5 bg-primary-50 rounded-xl border border-primary-100">
+                <div class="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-phone text-white text-lg"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900">Quick Appointment</h3>
                     <a href="tel:{{ $contactInfo->phone ?? '' }}" class="text-lg font-bold text-primary-600">{{ $contactInfo->phone ?? '01638209228' }}</a>
                 </div>
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12">
+{{-- Appointment Form --}}
+<section id="appointment-form" class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
             <div class="text-center mb-10">
                 <h2 class="text-2xl font-bold text-gray-900 mb-2">Request an Appointment</h2>
-                <p class="text-gray-600">Fill out the form below and we will get back to you to confirm your appointment.</p>
+                <p class="text-gray-600">Fill out the form below and we will contact you to confirm your appointment.</p>
             </div>
 
             <form action="{{ route('appointment.store') }}" method="POST">
@@ -71,6 +90,7 @@
                         <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
                         <input type="text" name="phone" id="phone" value="{{ old('phone') }}"
                             class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition @error('phone') border-red-500 @enderror"
+                            placeholder="01XXXXXXXXX"
                             required>
                         @error('phone')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -178,10 +198,14 @@
                     </div>
                 </div>
 
-                <div class="mt-8">
-                    <button type="submit" class="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-700 transition">
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <button type="submit" class="flex-1 bg-primary-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-700 transition">
                         Submit Appointment Request
                     </button>
+                    <a href="tel:{{ $contactInfo->phone ?? '' }}" class="sm:w-auto flex items-center justify-center gap-2 border-2 border-primary-600 text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-50 transition">
+                        <i class="fas fa-phone text-sm"></i>
+                        Call Instead
+                    </a>
                 </div>
             </form>
         </div>

@@ -133,7 +133,7 @@
     @endif
 
     {{-- Main Content --}}
-    <main>
+    <main class="pb-16 md:pb-0">
         @yield('content')
     </main>
 
@@ -213,6 +213,31 @@
             </div>
         </div>
     </footer>
+
+    {{-- Mobile Sticky CTA Bar --}}
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div class="flex">
+            <a href="tel:{{ $contactInfo->phone ?? '' }}" class="flex-1 flex items-center justify-center gap-2 py-3.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition border-r border-gray-200">
+                <i class="fas fa-phone text-primary-600"></i>
+                Call Now
+            </a>
+            <a href="{{ route('appointment.create') }}" class="flex-1 flex items-center justify-center gap-2 py-3.5 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 transition">
+                <i class="fas fa-calendar-check"></i>
+                Book Appointment
+            </a>
+        </div>
+    </div>
+
+    {{-- Desktop Floating CTA --}}
+    <div class="hidden md:flex fixed bottom-6 right-6 z-50 flex-col items-end gap-3">
+        <a href="tel:{{ $contactInfo->phone ?? '' }}" class="w-14 h-14 bg-white text-primary-600 rounded-full shadow-lg flex items-center justify-center hover:shadow-xl hover:bg-primary-50 transition group" title="Call {{ $contactInfo->phone ?? '' }}">
+            <i class="fas fa-phone text-lg group-hover:scale-110 transition"></i>
+        </a>
+        <a href="{{ route('appointment.create') }}" class="bg-primary-600 text-white px-5 py-3 rounded-full shadow-lg text-sm font-semibold hover:bg-primary-700 hover:shadow-xl transition inline-flex items-center gap-2">
+            <i class="fas fa-calendar-check text-xs"></i>
+            Book Appointment
+        </a>
+    </div>
 
     <script>
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
