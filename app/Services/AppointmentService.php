@@ -10,13 +10,17 @@ class AppointmentService
 {
     public function getAllAppointments(?string $search = null, ?string $status = null): LengthAwarePaginator
     {
-        $query = Appointment::with('doctor');
+        $query = Appointment::with(['doctor', 'patient']);
 
         if ($search) {
             $query->where(function (Builder $q) use ($search) {
                 $q->where('patient_name', 'like', "%{$search}%")
                     ->orWhere('phone', 'like', "%{$search}%")
-                    ->orWhere('email', 'like', "%{$search}%");
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhereHas('patient', function (Builder $pq) use ($search) {
+                        $pq->where('patient_id', 'like', "%{$search}%")
+                            ->orWhere('name', 'like', "%{$search}%");
+                    });
             });
         }
 
@@ -29,14 +33,23 @@ class AppointmentService
 
     public function getAppointmentById(int $id): Appointment
     {
-        return Appointment::with('doctor')->findOrFail($id);
+        return Appointment::with(['doctor', 'patient'])->findOrFail($id);
     }
 
     public function createAppointment(array $data): Appointment
     {
-        $data['status'] = 'pending';
+        if (!isset($data['status'])) {
+            $data['status'] = 'pending';
+        }
 
         return Appointment::create($data);
+    }
+
+    public function updateAppointment(Appointment $appointment, array $data): Appointment
+    {
+        $appointment->update($data);
+
+        return $appointment->fresh();
     }
 
     public function updateStatus(Appointment $appointment, string $status): Appointment
@@ -68,7 +81,7 @@ class AppointmentService
 
     public function getRecentAppointments(int $limit = 5)
     {
-        return Appointment::with('doctor')
+        return Appointment::with(['doctor', 'patient'])
             ->latest()
             ->take($limit)
             ->get();

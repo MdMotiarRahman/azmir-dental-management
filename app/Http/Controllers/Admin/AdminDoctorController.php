@@ -52,7 +52,8 @@ class AdminDoctorController extends Controller
         $this->doctorService->updateDoctor(
             $doctor,
             $request->validated(),
-            $request->file('photo')
+            $request->file('photo'),
+            $request->boolean('remove_photo')
         );
 
         return redirect()->route('admin.doctors.index')

@@ -33,13 +33,18 @@ class DoctorService
         return Doctor::create($data);
     }
 
-    public function updateDoctor(Doctor $doctor, array $data, ?UploadedFile $photo = null): Doctor
+    public function updateDoctor(Doctor $doctor, array $data, ?UploadedFile $photo = null, bool $removePhoto = false): Doctor
     {
-        if ($photo) {
+        if ($removePhoto && $doctor->photo) {
+            \Storage::disk('public')->delete($doctor->photo);
+            $data['photo'] = null;
+        } elseif ($photo) {
             if ($doctor->photo) {
                 \Storage::disk('public')->delete($doctor->photo);
             }
             $data['photo'] = $photo->store('doctors', 'public');
+        } else {
+            unset($data['photo']);
         }
 
         $doctor->update($data);

@@ -3,18 +3,18 @@
 @section('title', 'Manage Services')
 
 @section('content')
-<div class="flex items-center justify-between mb-8">
+<div class="flex items-center justify-between mb-6 md:mb-8">
     <div>
-        <h1 class="text-2xl font-bold text-gray-900">Services</h1>
-        <p class="text-gray-600">Manage hospital services</p>
+        <h1 class="text-xl md:text-2xl font-bold text-gray-900">Services</h1>
+        <p class="text-gray-600 text-sm">Manage hospital services</p>
     </div>
-    <a href="{{ route('admin.services.create') }}" class="bg-primary-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-primary-700 transition flex items-center gap-2">
-        <i class="fas fa-plus"></i> Add Service
+    <a href="{{ route('admin.services.create') }}" class="bg-primary-600 text-white px-3 md:px-5 py-2 md:py-2.5 rounded-lg font-medium hover:bg-primary-700 transition flex items-center gap-2 text-sm">
+        <i class="fas fa-plus text-xs md:text-sm"></i> <span class="hidden sm:inline">Add</span> Service
     </a>
 </div>
 
-{{-- Services Table --}}
-<div class="bg-white rounded-xl shadow-sm overflow-hidden">
+{{-- Desktop Table --}}
+<div class="hidden md:block bg-white rounded-xl shadow-sm overflow-hidden">
     <div class="overflow-x-auto">
         <table class="w-full">
             <thead class="bg-gray-50">
@@ -49,7 +49,7 @@
                                 <a href="{{ route('admin.services.edit', $service) }}" class="text-blue-600 hover:text-blue-800">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('admin.services.destroy', $service) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this service?')">
+                                <form action="{{ route('admin.services.destroy', $service) }}" method="POST" class="inline" onsubmit="event.preventDefault(); swalConfirm(this, 'Delete Service?', 'This will permanently remove this service.')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600 hover:text-red-800">
@@ -61,16 +61,50 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="px-6 py-12 text-center text-gray-500">
-                            No services found.
-                        </td>
+                        <td colspan="4" class="px-6 py-12 text-center text-gray-500">No services found.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
     </div>
-    <div class="p-4">
-        {{ $services->links() }}
-    </div>
+    <div class="p-4">{{ $services->links() }}</div>
+</div>
+
+{{-- Mobile Cards --}}
+<div class="md:hidden space-y-3">
+    @forelse($services as $service)
+        <div class="bg-white rounded-xl shadow-sm p-4">
+            <div class="flex items-start justify-between mb-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        @if($service->image)
+                            <img src="{{ $service->image_url }}" alt="{{ $service->title }}" class="w-full h-full object-cover rounded-lg">
+                        @else
+                            <i class="{{ $service->icon ?? 'fas fa-medkit' }} text-primary-600"></i>
+                        @endif
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-gray-900">{{ $service->title }}</p>
+                        <p class="text-xs text-gray-500 line-clamp-1">{{ Str::limit($service->description, 50) }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 justify-end">
+                <a href="{{ route('admin.services.edit', $service) }}" class="w-8 h-8 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-edit text-sm"></i>
+                </a>
+                <form action="{{ route('admin.services.destroy', $service) }}" method="POST" onsubmit="event.preventDefault(); swalConfirm(this, 'Delete Service?', 'This will permanently remove this service.')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="w-8 h-8 bg-red-50 text-red-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-trash text-sm"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    @empty
+        <div class="bg-white rounded-xl shadow-sm p-8 text-center text-gray-500 text-sm">No services found.</div>
+    @endforelse
+    <div class="mt-4">{{ $services->links() }}</div>
 </div>
 @endsection
